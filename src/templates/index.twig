@@ -1,0 +1,46 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * Therapy back in stock plugin for Craft CMS 3.x
+ *
+ * Therapy back in stock index.twig
+ *
+ * @author    Ab.Rezaei
+ * @copyright Copyright (c) 2022 Ab.Rezaei
+ * @link      https://github.com/AbRezaei
+ * @package   TherapyBackInStock
+ * @since     1.0.0
+ */
+#}
+
+{% extends "_layouts/cp" %}
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("abrezaei\\therapybackinstock\\assetbundles\\therapybackinstock\\TherapyBackInStockAsset") %}
+{% do view.registerAssetBundle("abrezaei\\therapybackinstock\\assetbundles\\indexcpsection\\IndexCPSectionAsset") %}
+
+{# Link for the ? icon at the bottom of the page #}
+{% set docsUrl = "https://github.com/AbRezaei/therapy-back-in-stock/blob/master/README.md" %}
+
+{# The title of this CP section #}
+{% set title = "Therapy back in stock" %}
+
+{# The URL to this plugin's base CP section #}
+{% set pluginCpUrl = url('therapy-back-in-stock') %}
+
+{# Get a URL to an image in our AssetBundle #}
+{% set iconUrl = view.getAssetManager().getPublishedUrl('@abrezaei/therapybackinstock/assetbundles/indexcpsection/dist', true) ~ '/img/Index-icon.svg' %}
+
+{# Content that should appear in the page header#}
+{% set extraPageHeaderHtml %}
+    <div class="buttons">
+        <a href="{{ pluginCpUrl }}" class="btn submit add icon">{{ "Click Me!"|t('therapy-back-in-stock') }}</a>
+    </div>
+{% endset %}
+
+{# The content of the CP Section#}
+{% set content %}
+    <h2>{{ "Index CP Section body goes here"|t('therapy-back-in-stock') }}</h2>
+    <img src="{{ iconUrl }}" height="64" width="64" />
+    <p class="textline"></p>
+{% endset %}

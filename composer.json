@@ -1,0 +1,44 @@
+{
+    "name": "abrezaei/therapy-back-in-stock",
+    "description": "This is Therapy back in stock plugin.",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "therapy back in stock"
+    ],
+    "support": {
+        "docs": "https://github.com/AbRezaei/therapy-back-in-stock/blob/master/README.md",
+        "issues": "https://github.com/AbRezaei/therapy-back-in-stock/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ab.Rezaei",
+            "homepage": "https://github.com/AbRezaei"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+          "abrezaei\\therapybackinstock\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Therapy back in stock",
+        "handle": "therapy-back-in-stock",
+        "developer": "Ab.Rezaei",
+        "developerUrl": "https://github.com/AbRezaei",
+        "documentationUrl": "https://github.com/AbRezaei/therapy-back-in-stock/blob/master/README.md",
+        "changelogUrl": "https://raw.githubusercontent.com/AbRezaei/therapy-back-in-stock/master/CHANGELOG.md",
+        "components": {
+            "backInStocks": "abrezaei\\therapybackinstock\\services\\BackInStocks"
+        },
+        "class": "abrezaei\\therapybackinstock\\TherapyBackInStock"
+    }
+}
