@@ -18,26 +18,15 @@ To install the plugin, follow these instructions.
 
 2. Then tell Composer to load the plugin:
 
-        composer require AbRezaei/therapy-back-in-stock
+        composer require AbRezaei/therapy-back-in-stock:dev-main
 
 3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Therapy back in stock.
 
 ## Therapy back in stock Overview
 
--Insert text here-
+When you install the plugin, a nav item named Therapy back in stock should be added to the sidebar. By clicking on it, you will be directed to a page that displays the list of back in stocks that isNotified == 0.
 
-## Configuring Therapy back in stock
 
--Insert text here-
 
-## Using Therapy back in stock
-
--Insert text here-
-
-## Therapy back in stock Roadmap
-
-Some things to do, and ideas for potential features:
-
-* Release it
 
 Brought to you by [Ab.Rezaei](https://github.com/AbRezaei)
