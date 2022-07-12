@@ -14,9 +14,13 @@
 #}
 
 {% extends "_layouts/cp" %}
-{% import "_includes/forms" as forms %}
+{% set crumbs = [
+    {
+        label: 'Therapy back in stock'|t('therapy-back-in-stock'),
+        url: url('therapy-back-in-stock'),
+    }
+] %}
 
-{#{% do view.registerAssetBundle("abrezaei\\therapybackinstock\\assetbundles\\therapybackinstock\\TherapyBackInStockAsset") %}#}
 {% do view.registerAssetBundle("abrezaei\\therapybackinstock\\assetbundles\\indexcpsection\\IndexCPSectionAsset") %}
 
 {# Link for the ? icon at the bottom of the page #}
@@ -31,16 +35,41 @@
 {# Get a URL to an image in our AssetBundle #}
 {% set iconUrl = view.getAssetManager().getPublishedUrl('@abrezaei/therapybackinstock/assetbundles/indexcpsection/dist', true) ~ '/img/Index-icon.svg' %}
 
-{# Content that should appear in the page header#}
-{% set extraPageHeaderHtml %}
-    <div class="buttons">
-        <a href="{{ pluginCpUrl }}" class="btn submit add icon">{{ "Click Me!"|t('therapy-back-in-stock') }}</a>
-    </div>
-{% endset %}
+{# Get back in stocks items #}
+{% set items = craft.therapyBackInStock.backInStocks %}
+{% set variantIds = [] %}
+{% for item in items %}
+    {% set variantIds = variantIds | merge([item.variantId]) %}
+{% endfor %}
+
+{% set variants = craft.variants()
+    .id(variantIds)
+    .fixedOrder()
+    .all() %}
 
 {# The content of the CP Section#}
 {% set content %}
-    <h2>{{ "Index CP Section body goes here"|t('therapy-back-in-stock') }}</h2>
-    <img src="{{ iconUrl }}" height="64" width="64" />
-    <p class="textline"></p>
+    <table>
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Id</th>
+            <th>Email</th>
+            <th>Product</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in variants %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ items[loop.index].id }}</td>
+                <td>{{ items[loop.index].email }}</td>
+                <td><a target="_blank" href="{{ item.url }}">{{ item.product.title }} - {{ item.title }}</a></td>
+                <td>{{ items[loop.index].dateCreated }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
 {% endset %}

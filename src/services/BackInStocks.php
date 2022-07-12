@@ -39,14 +39,18 @@ class BackInStocks extends Component
      *
      * From any other plugin file, call it like this:
      *
-     *     TherapyBackInStock::$plugin->backInStocks->exampleService()
+     *     TherapyBackInStock::$plugin->backInStocks->getBackInStocks()
      *
      * @return mixed
      */
-    public function exampleService()
+    public function getBackInStocks()
     {
-        $result = 'something';
-
-        return $result;
+        return (new \yii\db\Query())
+            ->select(['id','dateCreated', 'email','variantId','isNotified'])
+            ->from('backinstock_records')
+            ->where(array(
+                'isNotified' => 0
+            ))
+            ->all();
     }
 }
